@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main()
+{
+ int house, previous, current, units;
+ char category;
+ long energy, fixed = 5000, total; /* money in paise */
+ printf("Enter household number: ");
+ scanf("%d", &house);
+ printf("Enter previous reading: ");
+ scanf("%d", &previous);
+ printf("Enter current reading: ");
+ scanf("%d", &current);
+ printf("Enter category (D/C): ");
+ scanf(" %c", &category);
+ units = current - previous;
+ if (units <= 100)
+ energy = 0;
+ else if (units <= 200)
+ energy = (units - 100) * 225;
+ else
+ energy = 100 * 225 + (units - 200) * 450;
+ total = fixed + energy;
+ printf("\n--- Electricity Bill ---\n");
+ printf("Household Number: %d\n", house);
+ printf("Category: %c\n", category);
+ printf("Units Consumed: %d\n", units);
+ printf("Energy Charge: Rs. %ld.%02ld\n", energy / 100, energy % 100);
+ printf("Fixed Charge: Rs. %ld.%02ld\n", fixed / 100, fixed % 100);
+ printf("Total Bill: Rs. %ld.%02ld\n", total / 100, total % 100);
+ return 0;
+}
